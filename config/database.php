@@ -180,4 +180,29 @@ return [
 
     ],
 
+    'users' => [
+        'driver' => 'mysql',
+        'host' => env('DB_USERS_HOST', '127.0.0.1'),
+        'port' => env('DB_USERS_PORT', '3306'),
+        'database' => env('DB_USERS_DATABASE', 'users'),
+        'username' => env('DB_USERS_USERNAME', 'root'),
+        'password' => env('DB_USERS_PASSWORD', ''),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+    ],
+
+    'billing' => [
+        'driver' => 'mysql',
+        'host' => env('DB_BILLING_HOST', '127.0.0.1'),
+        'port' => env('DB_BILLING_PORT', '3306'),
+        'database' => env('DB_BILLING_DATABASE', 'billing'),
+        'username' => env('DB_BILLING_USERNAME', 'root'),
+        'password' => env('DB_BILLING_PASSWORD', ''),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+    ],
 ];

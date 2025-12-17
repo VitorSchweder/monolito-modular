@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use App\Modules\Users\Repositories\UserRepositoryInterface;
 use App\Modules\Users\Repositories\UserRepository;
+use App\Modules\Users\Services\Contracts\UserReaderInterface;
+use App\Modules\Users\Services\UserReader;
 
 class UsersServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class UsersServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             UserRepositoryInterface::class,
-            UserRepository::class
+            UserRepository::class,
+            UserReaderInterface::class,
+            UserReader::class
         );
 
         $this->mergeConfigFrom(

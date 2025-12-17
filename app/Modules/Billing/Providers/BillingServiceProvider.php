@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Modules\Users\Providers;
+namespace App\Modules\Billing\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use App\Modules\Users\Repositories\BillingRepositoryInterface;
-use App\Modules\Users\Repositories\BillingRepository;
+use App\Modules\Billing\Repositories\InvoiceRepositoryInterface;
+use App\Modules\Billing\Repositories\InvoiceRepository;
 
 class BillingServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
         $this->app->bind(
-            BillingRepositoryInterface::class,
-            BillingRepository::class
+            InvoiceRepositoryInterface::class,
+            InvoiceRepository::class
         );
 
         $this->mergeConfigFrom(

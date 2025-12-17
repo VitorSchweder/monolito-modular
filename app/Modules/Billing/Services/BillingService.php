@@ -1,53 +1,21 @@
 <?php
 
-namespace App\Modules\Users\Providers;
+namespace App\Modules\Billing\Services;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
-use App\Modules\Users\Repositories\BillingRepositoryInterface;
-use App\Modules\Users\Repositories\BillingRepository;
+use App\Modules\Users\Services\Contracts\UserReaderInterface;
 
-class BillingServiceProvider extends ServiceProvider
+class BillingService
 {
-    public function register(): void
+    public function __construct(
+        private readonly UserReaderInterface $userReader
+    ) {}
+
+    public function chargeUser(int $userId, float $amount): void
     {
-        $this->app->bind(
-            BillingRepositoryInterface::class,
-            BillingRepository::class
-        );
+        $user = $this->userReader->getById($userId);
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config.php',
-            'users'
-        );
-    }
-
-    public function boot(): void
-    {
-        $this->loadRoutes();
-        $this->loadMigrations();
-        $this->publishConfigs();
-    }
-
-    protected function loadRoutes(): void
-    {
-        Route::middleware('api')
-            ->prefix('api/billing')
-            ->group(__DIR__ . '/../Routes/api.php');
-
-        // Route::middleware('web')
-        //     ->group(__DIR__ . '/../Routes/web.php');
-    }
-
-    protected function loadMigrations(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-    }
-
-    protected function publishConfigs(): void
-    {
-        $this->publishes([
-            __DIR__ . '/../config.php' => config_path('billing.php'),
-        ], 'config');
+        if (!$user) {
+            throw new \RuntimeException('User not found');
+        }
     }
 }
