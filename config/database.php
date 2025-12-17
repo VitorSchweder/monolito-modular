@@ -113,6 +113,31 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'users' => [
+            'driver' => 'mysql',
+            'host' => env('DB_USERS_HOST', '127.0.0.1'),
+            'port' => env('DB_USERS_PORT', '3306'),
+            'database' => env('DB_USERS_DATABASE', 'users'),
+            'username' => env('DB_USERS_USERNAME', 'root'),
+            'password' => env('DB_USERS_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+
+        'billing' => [
+            'driver' => 'mysql',
+            'host' => env('DB_BILLING_HOST', '127.0.0.1'),
+            'port' => env('DB_BILLING_PORT', '3306'),
+            'database' => env('DB_BILLING_DATABASE', 'billing'),
+            'username' => env('DB_BILLING_USERNAME', 'root'),
+            'password' => env('DB_BILLING_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
     ],
 
     /*
@@ -178,31 +203,5 @@ return [
             'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
         ],
 
-    ],
-
-    'users' => [
-        'driver' => 'mysql',
-        'host' => env('DB_USERS_HOST', '127.0.0.1'),
-        'port' => env('DB_USERS_PORT', '3306'),
-        'database' => env('DB_USERS_DATABASE', 'users'),
-        'username' => env('DB_USERS_USERNAME', 'root'),
-        'password' => env('DB_USERS_PASSWORD', ''),
-        'charset' => 'utf8mb4',
-        'collation' => 'utf8mb4_unicode_ci',
-        'prefix' => '',
-        'strict' => true,
-    ],
-
-    'billing' => [
-        'driver' => 'mysql',
-        'host' => env('DB_BILLING_HOST', '127.0.0.1'),
-        'port' => env('DB_BILLING_PORT', '3306'),
-        'database' => env('DB_BILLING_DATABASE', 'billing'),
-        'username' => env('DB_BILLING_USERNAME', 'root'),
-        'password' => env('DB_BILLING_PASSWORD', ''),
-        'charset' => 'utf8mb4',
-        'collation' => 'utf8mb4_unicode_ci',
-        'prefix' => '',
-        'strict' => true,
     ],
 ];
